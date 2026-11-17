@@ -7,12 +7,44 @@
 /* ======================================================================
    1. About Us Banner
    ====================================================================== */
+
 .about-hero {
-    padding-bottom: 65px;
+    min-height: 400px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+
+    padding: 80px 20px;
+
+    background:
+        linear-gradient(
+            rgba(15, 23, 42, 0.75),
+            rgba(15, 23, 42, 0.85)
+        ),
+        url('../assets/images/background/about-hero.jpg');
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.about-hero h1 {
+    font-size: 3rem;
+    font-weight: 800;
+    margin-bottom: 15px;
 }
 
 .about-hero h1 span {
     color: var(--primary);
+}
+
+.about-hero p {
+    color: var(--white);
+    font-size: 1.2rem;
 }
 
 /* ======================================================================
