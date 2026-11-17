@@ -1,7 +1,7 @@
 /* =====================================================================
    EzyDrive Rentals - Booking Page CSS
    Reuses colors, navbar, footer, and buttons from styles/style.css.
-   This file only adds the form and tab styles for booking.html.
+   This file adds the forms and tab styles for booking.php.
    ===================================================================== */
 
 /* 1. Page heading: same simple style as the other pages */
@@ -248,4 +248,52 @@
         align-items: flex-start;
         flex-direction: column;
     }
+}
+
+/* ======================================================================
+   8. Backend-enabled page additions
+   Account indicator, login tab, and small admin vehicle manager.
+   ====================================================================== */
+.account-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    padding: 12px 18px;
+    margin-bottom: 16px;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: var(--radius-sm);
+    color: #cbd5e1;
+}
+.account-bar .cancel-btn { margin-top: 0; }
+.booking-tabs { flex-wrap: wrap; }
+.booking-tab { min-width: 125px; }
+
+/* Select boxes look like the existing text fields. */
+.form-field select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: var(--radius-sm);
+    background: #0f172a;
+    color: var(--white);
+    font: inherit;
+}
+.form-field input[readonly] { opacity: 0.8; }
+.available-field { display: flex; align-items: center; }
+.available-field input { width: auto; margin-right: 8px; }
+.form-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+.manage-list { margin-top: 30px; }
+.manage-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 12px 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+}
+.manage-row .cancel-btn { margin-top: 0; }
+@media (max-width: 600px) {
+    .account-bar, .manage-row { align-items: flex-start; flex-direction: column; }
 }

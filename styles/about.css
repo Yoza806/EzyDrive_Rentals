@@ -163,3 +163,45 @@
         font-size: 1.7rem;
     }
 }
+
+
+/* ======================================================================
+   6. Multimedia and Team Cards
+   Keep the same navy surfaces and rounded corners as other sections.
+   ====================================================================== */
+.about-media {
+    max-width: 850px;
+    text-align: center;
+}
+
+.fleet-video {
+    display: block;
+    width: 100%;
+    max-width: 740px;
+    margin: 0 auto;
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    border-radius: var(--radius-md);
+    background: var(--dark);
+    box-shadow: var(--shadow-md);
+}
+
+.about-section .media-caption {
+    font-size: 0.85rem;
+    color: #94a3b8;
+    margin-top: 12px;
+}
+
+.team-card {
+    text-align: center;
+    padding: 24px 16px;
+}
+
+.team-card h3 {
+    color: var(--primary);
+    font-size: 1.15rem;
+    margin-bottom: 8px;
+}
+
+.team-card p {
+    font-size: 0.9rem;
+}

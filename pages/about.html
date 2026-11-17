@@ -28,8 +28,8 @@
             <nav aria-label="Main navigation">
                 <ul class="nav-links" id="navLinks">
                     <li><a href="../index.html" class="nav-link">Home</a></li>
-                    <li><a href="vehicles.html" class="nav-link">Vehicles</a></li>
-                    <li><a href="booking.html" class="nav-link">Booking</a></li>
+                    <li><a href="vehicles.php" class="nav-link">Vehicles</a></li>
+                    <li><a href="booking.php" class="nav-link">Booking</a></li>
                     <li><a href="about.html" class="nav-link active" aria-current="page">About Us</a></li>
                 </ul>
             </nav>
@@ -129,19 +129,60 @@
         </section>
 
         <!-- ===============================================================
-             6. OUR TEAM
-             A simple introduction (team details can be added later)
+             6. MULTIMEDIA SECTION
+             A short, original slideshow made from our vehicle images.
+             The <video> element supplies standard play/pause controls.
              =============================================================== -->
-        <section class="about-section about-section-alt about-team">
+        <section class="about-section about-section-alt">
+            <div class="container about-media">
+                <div class="about-heading">
+                    <h2>Explore Our Fleet</h2>
+                    <p>Take a quick look at some of the vehicles in our rental catalog.</p>
+                </div>
+                <video class="fleet-video" controls preload="metadata"
+                       poster="../assets/images/vehicles/sedan-silver.png">
+                    <source src="../assets/media/fleet-showcase.mp4" type="video/mp4">
+                    Your browser does not support HTML video.
+                </video>
+                <p class="media-caption">Sample vehicle images are for the coursework demonstration.</p>
+            </div>
+        </section>
+
+        <!-- ===============================================================
+             7. OUR TEAM
+             Replace each placeholder with the correct member's name.
+             Assign roles to match the actual work done by your group.
+             =============================================================== -->
+        <section class="about-section about-team">
             <div class="container">
-                <h2>Meet Our Team</h2>
-                <p>Meet the people behind EzyDrive Rentals.</p>
+                <div class="about-heading">
+                    <h2>Meet Our Team</h2>
+                    <p>Four students working together on the EzyDrive Rentals project.</p>
+                </div>
+                <div class="about-card-grid four-columns">
+                    <article class="about-card team-card">
+                        <h3>Member 1</h3>
+                        <p>Home Page &amp; Navigation</p>
+                    </article>
+                    <article class="about-card team-card">
+                        <h3>Member 2</h3>
+                        <p>Vehicle Catalog</p>
+                    </article>
+                    <article class="about-card team-card">
+                        <h3>Member 3</h3>
+                        <p>About Us &amp; Multimedia</p>
+                    </article>
+                    <article class="about-card team-card">
+                        <h3>Member 4</h3>
+                        <p>Booking &amp; Database</p>
+                    </article>
+                </div>
             </div>
         </section>
     </main>
 
     <!-- ===================================================================
-         7. FOOTER
+         8. FOOTER
          Same footer used on the Home and Vehicles pages
          =================================================================== -->
     <footer class="footer">
