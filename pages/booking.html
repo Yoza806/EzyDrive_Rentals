@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EzyDrive Rentals | Booking</title>
+    <meta name="description" content="Register a customer, book a vehicle, or review rental bookings with EzyDrive Rentals.">
+
+    <!-- Shared site design, followed by styles for this page only -->
+    <link rel="stylesheet" href="../styles/style.css">
+    <link rel="stylesheet" href="../styles/booking.css">
+</head>
+<body>
+
+    <!-- ==============================================================
+         1. HEADER & NAVIGATION
+         Matches the homepage and other pages in the project.
+         ============================================================== -->
+    <header class="header" id="mainHeader">
+        <div class="container navbar">
+            <a href="../index.html" class="logo">
+                <div class="logo-icon">🚘</div>
+                Ezy<span>Drive</span>
+            </a>
+
+            <nav aria-label="Main navigation">
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="../index.html" class="nav-link">Home</a></li>
+                    <li><a href="vehicles.html" class="nav-link">Vehicles</a></li>
+                    <li><a href="booking.html" class="nav-link active" aria-current="page">Booking</a></li>
+                    <li><a href="about.html" class="nav-link">About Us</a></li>
+                </ul>
+            </nav>
+
+            <div class="nav-actions">
+                <button class="menu-toggle" id="menuToggle" aria-label="Toggle Menu" aria-expanded="false">☰</button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- ==========================================================
+             2. PAGE HEADING
+             Uses the same page-banner design as Vehicles and About.
+             ========================================================== -->
+        <section class="page-banner booking-banner">
+            <div class="container page-banner-content">
+                <h1>Register &amp; <span class="booking-accent">Book</span></h1>
+                <p>Register a customer, book a vehicle, or review existing bookings.</p>
+            </div>
+        </section>
+
+        <!-- ==========================================================
+             3. BOOKING PAGE CONTENT
+             Three buttons switch between Register User, Book a Vehicle, and Booking Details.
+             ========================================================== -->
+        <section class="booking-section">
+            <div class="container booking-container">
+                <div class="booking-tabs" aria-label="Booking page sections">
+                    <button type="button" class="booking-tab active" id="registerTab" aria-controls="register" aria-selected="true">
+                        Register User
+                    </button>
+                    <button type="button" class="booking-tab" id="bookingTab" aria-controls="booking" aria-selected="false">
+                        Book a Vehicle
+                    </button>
+                    <button type="button" class="booking-tab" id="detailsTab" aria-controls="details" aria-selected="false">
+                        Booking Details
+                    </button>
+                </div>
+
+                <!-- ==================================================
+                     4. USER REGISTRATION FORM
+                     Only checks input in the browser for now.
+                     No user information or password is saved yet.
+                     ================================================== -->
+                <section class="booking-panel" id="register" aria-labelledby="registerHeading">
+                    <h2 id="registerHeading">Create a Customer Account</h2>
+                    <p class="booking-description">Enter the customer's details below.</p>
+
+                    <form id="registerForm">
+                        <div class="booking-form-grid">
+                            <div class="form-field">
+                                <label for="fullName">Full Name</label>
+                                <input type="text" id="fullName" name="fullName" placeholder="Your full name" autocomplete="name" required>
+                            </div>
+                            <div class="form-field">
+                                <label for="email">Email Address</label>
+                                <input type="email" id="email" name="email" placeholder="name@example.com" autocomplete="email" required>
+                            </div>
+                            <div class="form-field">
+                                <label for="phone">Phone Number</label>
+                                <input type="tel" id="phone" name="phone" placeholder="07XXXXXXXX" autocomplete="tel" required>
+                            </div>
+                            <div class="form-field">
+                                <label for="password">Password</label>
+                                <input type="password" id="password" name="password" minlength="8" placeholder="At least 8 characters" autocomplete="new-password" required>
+                            </div>
+                            <div class="form-field">
+                                <label for="confirmPassword">Confirm Password</label>
+                                <input type="password" id="confirmPassword" name="confirmPassword" minlength="8" placeholder="Enter password again" autocomplete="new-password" required>
+                            </div>
+                        </div>
+                        <button class="btn btn-primary" type="submit">Register User</button>
+                        <p class="form-message" id="registerMessage" aria-live="polite"></p>
+                    </form>
+                    <p class="booking-note">Frontend preview: users are not saved until the PHP/MySQL backend is added.</p>
+                </section>
+
+                <!-- ==================================================
+                     5. VEHICLE BOOKING SECTION
+                     If the visitor came from a vehicle card, show its
+                     name and the booking form. Otherwise, show a link
+                     to the Vehicles page so they can choose a car.
+                     ================================================== -->
+                <section class="booking-panel" id="booking" aria-labelledby="bookingHeading" hidden>
+                    <h2 id="bookingHeading">Book a Vehicle</h2>
+                    <p class="booking-description">Choose a vehicle to get started with your rental.</p>
+
+                    <!-- Shown when this page is opened directly, without a car -->
+                    <div id="chooseVehicle">
+                        <p class="booking-description">You haven't selected a vehicle yet.</p>
+                        <a href="vehicles.html" class="btn btn-primary">Browse Vehicles &rarr;</a>
+                    </div>
+
+                    <!-- Shown when Book Now was clicked on the Vehicles page -->
+                    <form id="bookingForm" hidden>
+                        <div class="selected-vehicle">
+                            <div>
+                                <span class="selected-label">Selected Vehicle</span>
+                                <h3 id="selectedVehicle">Vehicle Name</h3>
+                                <p id="selectedPrice">Daily rental price</p>
+                            </div>
+                            <a href="vehicles.html" class="change-vehicle">Change Vehicle</a>
+                        </div>
+
+                        <div class="booking-form-grid">
+                            <div class="form-field">
+                                <label for="customerName">Customer Name</label>
+                                <input type="text" id="customerName" name="customerName" autocomplete="name" required>
+                            </div>
+                            <div class="form-field">
+                                <label for="customerPhone">Phone Number</label>
+                                <input type="tel" id="customerPhone" name="customerPhone" autocomplete="tel" required>
+                            </div>
+                            <div class="form-field">
+                                <label for="pickupDate">Pickup Date</label>
+                                <input type="date" id="pickupDate" name="pickupDate" required>
+                            </div>
+                            <div class="form-field">
+                                <label for="returnDate">Return Date</label>
+                                <input type="date" id="returnDate" name="returnDate" required>
+                            </div>
+                        </div>
+
+                        <div class="booking-total" id="bookingTotal" aria-live="polite">
+                            Select the rental dates to see the estimated price.
+                        </div>
+                        <button class="btn btn-primary" type="submit">Book Vehicle</button>
+                        <p class="form-message" id="bookingMessage" aria-live="polite"></p>
+                        <p class="booking-note">Demo only. Bookings are saved in this browser, not in the database.</p>
+                    </form>
+                </section>
+
+                <!-- ==================================================
+                     6. BOOKING DETAILS
+                     JavaScript fills this area with bookings stored in
+                     this browser. The Cancel button marks one cancelled.
+                     ================================================== -->
+                <section class="booking-panel" id="details" aria-labelledby="detailsHeading" hidden>
+                    <h2 id="detailsHeading">Booking Details</h2>
+                    <p class="booking-description">See who booked each vehicle and manage existing reservations.</p>
+
+                    <!-- Individual booking cards are added here by booking.js -->
+                    <div id="bookingList" aria-live="polite"></div>
+
+                    <p class="booking-note">
+                        Demo only: bookings are saved in this browser using localStorage.
+                        Other devices cannot see them. Use sample customer details, not real personal information.
+                    </p>
+                </section>
+            </div>
+        </section>
+    </main>
+
+    <!-- ==============================================================
+         7. FOOTER
+         Same footer used throughout the website.
+         ============================================================== -->
+    <footer class="footer">
+        <div class="container footer-bottom">
+            <p>&copy; 2026 EzyDrive Rentals. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Shared navbar script, then functionality for this booking page -->
+    <script src="../scripts/main.js"></script>
+    <script src="../scripts/booking.js"></script>
+</body>
+</html>
