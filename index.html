@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EzyDrive Rentals | Premium & Affordable Car Rental Service</title>
+    <meta name="description"
+        content="Rent luxury sedans, SUVs, electric vehicles, and economy cars at EzyDrive Rentals. Instant booking, 24/7 roadside support, and transparent pricing.">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body>
+
+    <!-- ===================================================================
+         HEADER & NAVIGATION (Links to all 4 required pages)
+         1. Home (index.html)
+         2. Vehicles (pages/vehicles.html)
+         3. About Us (pages/about.html)
+         4. User Dashboard (pages/dashboard.html)
+         =================================================================== -->
+    <header class="header" id="mainHeader">
+        <div class="container navbar">
+            <a href="index.html" class="logo">
+                <div class="logo-icon">🚘</div>
+                Ezy<span>Drive</span>
+            </a>
+
+            <nav>
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="index.html" class="nav-link active">Home</a></li>
+                    <li><a href="pages/vehicles.html" class="nav-link">Vehicles</a></li>
+                    <li><a href="pages/about.html" class="nav-link">About Us</a></li>
+                    <li><a href="pages/dashboard.html" class="nav-link">User Dashboard</a></li>
+                </ul>
+            </nav>
+
+            <div class="nav-actions">
+                <a href="pages/dashboard.html" class="dashboard-pill" title="Go to User Dashboard">
+                    <span>👤</span> My Account
+                </a>
+                <a href="pages/vehicles.html" class="btn btn-primary">Rent a Car</a>
+                <button class="menu-toggle" id="menuToggle" aria-label="Toggle Menu" aria-expanded="false">☰</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- ===================================================================
+         HERO SECTION
+         =================================================================== -->
+    <section class="hero">
+        <div class="container hero-grid">
+            <div class="hero-content">
+                <div class="hero-tag">
+                    <span>⚡</span> Zero Hidden Fees &bull; 24/7 Roadside Assistance
+                </div>
+                <h1>Drive Your Journey With <span>EzyDrive</span> Rentals</h1>
+                <p>
+                    From executive luxury sedans and family SUVs to eco-friendly electric rides—unlock keys to over 150+
+                    inspected vehicles at unbeatable daily rates.
+                </p>
+                <div class="hero-buttons">
+                    <a href="pages/vehicles.html" class="btn btn-primary">Explore All Vehicles &rarr;</a>
+                    <a href="pages/about.html" class="btn btn-outline">Learn About Us</a>
+                </div>
+
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <h3>150+</h3>
+                        <p>Premium Vehicles</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>25k+</h3>
+                        <p>Happy Customers</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>4.9★</h3>
+                        <p>Customer Rating</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hero-visual">
+                <div class="hero-car-card">
+                    <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1000&q=80"
+                        alt="Porsche 911 Carrera Featured Rental">
+                    <div class="hero-car-meta">
+                        <div>
+                            <h4>Porsche 911 Carrera S</h4>
+                            <span>Automatic &bull; Twin-Turbo &bull; 2 Seats</span>
+                        </div>
+                        <div class="hero-car-price">
+                            <strong>$189</strong>
+                            <small>per day</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================================================================
+         QUICK BOOKING SEARCH BAR
+         =================================================================== -->
+    <section class="booking-section" aria-label="Quick Vehicle Search">
+        <div class="container">
+            <div class="booking-card">
+                <form id="quickBookingForm" class="booking-form" action="backend/search_vehicles.php" method="GET">
+                    <div class="form-group">
+                        <label for="pickupLocation">Pick-Up Location</label>
+                        <select id="pickupLocation" name="location" class="form-control" required>
+                            <option value="Downtown Hub">Downtown Central Hub</option>
+                            <option value="International Airport">International Airport (Terminal 1)</option>
+                            <option value="Northside Station">Northside Metro Station</option>
+                            <option value="Harbor Bay">Harbor Bay Luxury Lounge</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="carType">Vehicle Category</label>
+                        <select id="carType" name="category" class="form-control">
+                            <option value="all">All Categories</option>
+                            <option value="suv">SUV &amp; Family</option>
+                            <option value="luxury">Luxury &amp; Sport</option>
+                            <option value="electric">Electric (EV)</option>
+                            <option value="economy">Economy Sedan</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="pickupDate">Pick-Up Date</label>
+                        <input type="date" id="pickupDate" name="pickup_date" class="form-control" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="returnDate">Return Date</label>
+                        <input type="date" id="returnDate" name="return_date" class="form-control" required>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary" style="height: 48px;">
+                        Find Vehicle
+                    </button>
+                </form>
+                <div id="bookingFeedback" class="booking-feedback"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================================================================
+         FEATURED FLEET SECTION
+         =================================================================== -->
+    <section class="vehicles-section" id="featured-fleet">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">Our Featured Fleet</span>
+                <h2>Top-Rated Vehicles Ready For Pick-Up</h2>
+                <p>Filter through our most popular rides or visit our full Vehicles catalog to compare specs and book
+                    online.</p>
+            </div>
+
+            <!-- Filter Tabs -->
+            <div class="filter-tabs" role="tablist">
+                <button class="filter-btn active" data-filter="all" type="button">All Vehicles</button>
+                <button class="filter-btn" data-filter="luxury" type="button">Luxury</button>
+                <button class="filter-btn" data-filter="suv" type="button">SUVs</button>
+                <button class="filter-btn" data-filter="electric" type="button">Electric</button>
+                <button class="filter-btn" data-filter="economy" type="button">Economy</button>
+            </div>
+
+            <!-- Vehicles Grid -->
+            <div class="vehicles-grid" id="vehiclesGrid">
+                <!-- Card 1 -->
+                <article class="vehicle-card" data-category="electric">
+                    <div class="vehicle-img-wrap">
+                        <span class="vehicle-badge">Electric</span>
+                        <span class="vehicle-rating">★ 4.9</span>
+                        <img src="https://images.unsplash.com/photo-1560958089-b8a1929cea89?auto=format&fit=crop&w=800&q=80"
+                            alt="Tesla Model 3 Long Range">
+                    </div>
+                    <div class="vehicle-body">
+                        <h3 class="vehicle-title">Tesla Model 3 Dual Motor</h3>
+                        <p class="vehicle-sub">Autopilot Included &bull; 358 mi Range</p>
+                        <div class="vehicle-specs">
+                            <span class="spec-item">👤 5 Seats</span>
+                            <span class="spec-item">⚙️ Auto</span>
+                            <span class="spec-item">🔋 EV</span>
+                        </div>
+                        <div class="vehicle-footer">
+                            <div class="vehicle-price">
+                                <strong>$89</strong><span>/day</span>
+                            </div>
+                            <button type="button" class="btn btn-dark js-book-car" data-car="Tesla Model 3 Dual Motor"
+                                data-price="89">
+                                Book Now
+                            </button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Card 2 -->
+                <article class="vehicle-card" data-category="suv">
+                    <div class="vehicle-img-wrap">
+                        <span class="vehicle-badge">SUV</span>
+                        <span class="vehicle-rating">★ 4.8</span>
+                        <img src="https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?auto=format&fit=crop&w=800&q=80"
+                            alt="Range Rover Velar AWD">
+                    </div>
+                    <div class="vehicle-body">
+                        <h3 class="vehicle-title">Range Rover Velar R-Dynamic</h3>
+                        <p class="vehicle-sub">All-Wheel Drive &bull; Panoramic Roof</p>
+                        <div class="vehicle-specs">
+                            <span class="spec-item">👤 5 Seats</span>
+                            <span class="spec-item">⚙️ Auto</span>
+                            <span class="spec-item">⛽ Hybrid</span>
+                        </div>
+                        <div class="vehicle-footer">
+                            <div class="vehicle-price">
+                                <strong>$135</strong><span>/day</span>
+                            </div>
+                            <button type="button" class="btn btn-dark js-book-car"
+                                data-car="Range Rover Velar R-Dynamic" data-price="135">
+                                Book Now
+                            </button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Card 3 -->
+                <article class="vehicle-card" data-category="luxury">
+                    <div class="vehicle-img-wrap">
+                        <span class="vehicle-badge">Luxury</span>
+                        <span class="vehicle-rating">★ 5.0</span>
+                        <img src="https://images.unsplash.com/photo-1555215695-3004980ad54e?auto=format&fit=crop&w=800&q=80"
+                            alt="BMW M4 Competition Coupe">
+                    </div>
+                    <div class="vehicle-body">
+                        <h3 class="vehicle-title">BMW M4 Competition</h3>
+                        <p class="vehicle-sub">TwinPower Turbo &bull; Harman Kardon</p>
+                        <div class="vehicle-specs">
+                            <span class="spec-item">👤 4 Seats</span>
+                            <span class="spec-item">⚙️ Auto</span>
+                            <span class="spec-item">⛽ Petrol</span>
+                        </div>
+                        <div class="vehicle-footer">
+                            <div class="vehicle-price">
+                                <strong>$155</strong><span>/day</span>
+                            </div>
+                            <button type="button" class="btn btn-dark js-book-car" data-car="BMW M4 Competition"
+                                data-price="155">
+                                Book Now
+                            </button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Card 4 -->
+                <article class="vehicle-card" data-category="economy">
+                    <div class="vehicle-img-wrap">
+                        <span class="vehicle-badge">Economy</span>
+                        <span class="vehicle-rating">★ 4.7</span>
+                        <img src="https://images.unsplash.com/photo-1590362891991-f776e747a588?auto=format&fit=crop&w=800&q=80"
+                            alt="Honda Civic Touring Sedan">
+                    </div>
+                    <div class="vehicle-body">
+                        <h3 class="vehicle-title">Honda Civic Sport Touring</h3>
+                        <p class="vehicle-sub">Apple CarPlay &bull; 38 MPG Highway</p>
+                        <div class="vehicle-specs">
+                            <span class="spec-item">👤 5 Seats</span>
+                            <span class="spec-item">⚙️ Auto</span>
+                            <span class="spec-item">⛽ Petrol</span>
+                        </div>
+                        <div class="vehicle-footer">
+                            <div class="vehicle-price">
+                                <strong>$49</strong><span>/day</span>
+                            </div>
+                            <button type="button" class="btn btn-dark js-book-car" data-car="Honda Civic Sport Touring"
+                                data-price="49">
+                                Book Now
+                            </button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Card 5 -->
+                <article class="vehicle-card" data-category="suv">
+                    <div class="vehicle-img-wrap">
+                        <span class="vehicle-badge">SUV</span>
+                        <span class="vehicle-rating">★ 4.9</span>
+                        <img src="https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&w=800&q=80"
+                            alt="Jeep Grand Cherokee 4x4">
+                    </div>
+                    <div class="vehicle-body">
+                        <h3 class="vehicle-title">Jeep Grand Cherokee 4x4</h3>
+                        <p class="vehicle-sub">Spacious Cargo &bull; Trail Rated</p>
+                        <div class="vehicle-specs">
+                            <span class="spec-item">👤 7 Seats</span>
+                            <span class="spec-item">⚙️ Auto</span>
+                            <span class="spec-item">⛽ Diesel</span>
+                        </div>
+                        <div class="vehicle-footer">
+                            <div class="vehicle-price">
+                                <strong>$98</strong><span>/day</span>
+                            </div>
+                            <button type="button" class="btn btn-dark js-book-car" data-car="Jeep Grand Cherokee 4x4"
+                                data-price="98">
+                                Book Now
+                            </button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Card 6 -->
+                <article class="vehicle-card" data-category="luxury">
+                    <div class="vehicle-img-wrap">
+                        <span class="vehicle-badge">Luxury</span>
+                        <span class="vehicle-rating">★ 4.9</span>
+                        <img src="https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?auto=format&fit=crop&w=800&q=80"
+                            alt="Mercedes-Benz C300 AMG Line">
+                    </div>
+                    <div class="vehicle-body">
+                        <h3 class="vehicle-title">Mercedes-Benz C300 AMG</h3>
+                        <p class="vehicle-sub">Executive Comfort &bull; MBUX Cockpit</p>
+                        <div class="vehicle-specs">
+                            <span class="spec-item">👤 5 Seats</span>
+                            <span class="spec-item">⚙️ Auto</span>
+                            <span class="spec-item">⛽ Hybrid</span>
+                        </div>
+                        <div class="vehicle-footer">
+                            <div class="vehicle-price">
+                                <strong>$120</strong><span>/day</span>
+                            </div>
+                            <button type="button" class="btn btn-dark js-book-car" data-car="Mercedes-Benz C300 AMG"
+                                data-price="120">
+                                Book Now
+                            </button>
+                        </div>
+                    </div>
+                </article>
+            </div>
+
+            <div class="section-cta">
+                <a href="pages/vehicles.html" class="btn btn-primary">View All 150+ Vehicles &rarr;</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================================================================
+         HOW IT WORKS (3-STEP PROCESS)
+         =================================================================== -->
+    <section class="steps-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">Simple &amp; Fast</span>
+                <h2>Rent Your Car In 3 Easy Steps</h2>
+                <p>No paperwork headaches or long counter lines. Book online and hit the road in minutes.</p>
+            </div>
+
+            <div class="steps-grid">
+                <div class="step-card">
+                    <div class="step-num">01</div>
+                    <h3>Choose Location &amp; Dates</h3>
+                    <p>Select your preferred pick-up hub and rental dates using our real-time availability search bar.
+                    </p>
+                </div>
+
+                <div class="step-card">
+                    <div class="step-num">02</div>
+                    <h3>Select Your Perfect Ride</h3>
+                    <p>Compare transparent daily pricing across Economy, SUV, Electric, and Luxury vehicles.</p>
+                </div>
+
+                <div class="step-card">
+                    <div class="step-num">03</div>
+                    <h3>Pick Up &amp; Manage Online</h3>
+                    <p>Unlock your vehicle with express check-in and manage your reservation from your User Dashboard.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================================================================
+         WHY CHOOSE US & USER DASHBOARD HIGHLIGHT
+         =================================================================== -->
+    <section class="why-section">
+        <div class="container why-grid">
+            <div>
+                <span class="section-badge">Why EzyDrive</span>
+                <h2 style="font-size: 2.2rem; color: var(--dark); margin-bottom: 14px;">Built Around Your Comfort,
+                    Safety &amp; Budget</h2>
+                <p style="color: var(--text-muted);">
+                    Learn more on our <a href="pages/about.html" style="color: var(--primary); font-weight: 600;">About
+                        Us</a> page about how we maintain every vehicle to dealership standards.
+                </p>
+
+                <div class="feature-list">
+                    <div class="feature-item">
+                        <div class="feature-icon">🛡️</div>
+                        <div>
+                            <h4>Comprehensive Insurance Included</h4>
+                            <p>Every rental includes standard collision coverage and zero-deductible upgrade options.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="feature-item">
+                        <div class="feature-icon">💳</div>
+                        <div>
+                            <h4>Free Cancellation Up to 24 Hours</h4>
+                            <p>Plans changed? Modify or cancel your booking directly inside your User Dashboard at no
+                                extra charge.</p>
+                        </div>
+                    </div>
+
+                    <div class="feature-item">
+                        <div class="feature-icon">🔧</div>
+                        <div>
+                            <h4>100-Point Safety Inspection</h4>
+                            <p>Every vehicle is sanitized, serviced, and safety-checked before keys are handed over.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- User Dashboard Promo Card -->
+            <div class="promo-banner">
+                <span class="section-badge" style="background: rgba(255,255,255,0.12); color: #fff;">All-In-One
+                    Control</span>
+                <h3>Manage Trips Easily in Your User Dashboard</h3>
+                <p>Track active bookings, download invoices, extend rental days, and redeem loyalty points from one
+                    clean portal.</p>
+                <ul class="promo-perks">
+                    <li><span>✓</span> View upcoming &amp; past vehicle reservations</li>
+                    <li><span>✓</span> Instant digital receipts &amp; license verification</li>
+                    <li><span>✓</span> One-click trip extension &amp; 24/7 live support</li>
+                </ul>
+                <a href="pages/dashboard.html" class="btn btn-primary">Open User Dashboard &rarr;</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================================================================
+         CUSTOMER TESTIMONIALS
+         =================================================================== -->
+    <section class="testimonials-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">Drivers Love Us</span>
+                <h2>What Our Customers Say</h2>
+                <p>Real reviews from verified drivers who rented with EzyDrive across the country.</p>
+            </div>
+
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="stars">★★★★★</div>
+                    <p>"Picked up a Tesla Model 3 at the airport in under 10 minutes. The car was spotless and the
+                        dashboard made extending my trip by a day effortless!"</p>
+                    <div class="customer-info">
+                        <div class="customer-avatar">DL</div>
+                        <div>
+                            <h5>Daniel Lawson</h5>
+                            <span>Business Traveler</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="stars">★★★★★</div>
+                    <p>"We rented the Jeep Grand Cherokee for our family road trip. Transparent pricing with zero
+                        surprise fees at return. Highly recommend EzyDrive!"</p>
+                    <div class="customer-info">
+                        <div class="customer-avatar">SR</div>
+                        <div>
+                            <h5>Sophia Ramirez</h5>
+                            <span>Family Vacationer</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="stars">★★★★★</div>
+                    <p>"Best luxury fleet in town! Rented the BMW M4 for my anniversary weekend. Customer service was
+                        top-notch from booking to drop-off."</p>
+                    <div class="customer-info">
+                        <div class="customer-avatar">MK</div>
+                        <div>
+                            <h5>Marcus Vance</h5>
+                            <span>Weekend Enthusiast</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================================================================
+         QUICK BOOKING MODAL
+         =================================================================== -->
+    <div class="modal-overlay" id="bookingModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+        <div class="modal-box">
+            <span class="section-badge">Express Reservation</span>
+            <h3 id="modalTitle">Reserve <span id="modalCarName">Vehicle</span></h3>
+            <p>Selected Rate: <strong id="modalCarPrice" style="color: var(--primary);">$0/day</strong>. Proceed to the
+                Vehicles or User Dashboard page to finalize your booking details.</p>
+            <div class="modal-actions">
+                <button type="button" class="btn btn-dark" id="closeModalBtn">Cancel</button>
+                <a href="pages/dashboard.html" class="btn btn-primary">Continue to Dashboard</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===================================================================
+         FOOTER
+         =================================================================== -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="index.html" class="logo">
+                        <div class="logo-icon">🚘</div>
+                        Ezy<span>Drive</span>
+                    </a>
+                    <p>Premium car rental service offering economy, SUV, electric, and luxury vehicles with transparent
+                        pricing and 24/7 support.</p>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Site Pages</h4>
+                    <ul>
+                        <li><a href="index.html">Home Page</a></li>
+                        <li><a href="pages/vehicles.html">Vehicles Fleet</a></li>
+                        <li><a href="pages/about.html">About Us</a></li>
+                        <li><a href="pages/dashboard.html">User Dashboard</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Vehicle Types</h4>
+                    <ul>
+                        <li><a href="pages/vehicles.html?type=economy">Economy Sedans</a></li>
+                        <li><a href="pages/vehicles.html?type=suv">Family SUVs</a></li>
+                        <li><a href="pages/vehicles.html?type=electric">Electric Vehicles</a></li>
+                        <li><a href="pages/vehicles.html?type=luxury">Luxury &amp; Sports</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Contact Support</h4>
+                    <ul>
+                        <li>📍 450 Mobility Blvd, Suite 200</li>
+                        <li>📞 +1 (800) 555-EZYD</li>
+                        <li>✉️ support@ezydriverentals.com</li>
+                        <li>🕒 Mon – Sun: 24/7 Service</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 EzyDrive Rentals. All rights reserved.</p>
+                <p>Built with HTML5, CSS3, JavaScript &amp; PHP</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/js/main.js"></script>
+</body>
+
+</html>
